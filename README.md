@@ -8,7 +8,7 @@ This project uses React, Node, Express, MongoDB, Graphql, Apollo Client and Char
 
 ### `npm install`
 
-To install all the packages (in top level directory and aalso in 'client' folder).
+To install all the packages (in top level directory and also in 'client' folder).
 
 # Adding data to MongoDB
 
