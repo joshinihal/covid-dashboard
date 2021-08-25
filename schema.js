@@ -25,9 +25,23 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         patients: {
             type: new GraphQLList(PatientType),
-            async resolve = (parent, args) => {
+            async resolve(parent, args) {
                 try {
                     const data = await db.getDB().collection('patient').find().toArray();
+                    return data;
+                } catch (e){
+                    console.log('Error happened');
+                }
+            }
+        }, 
+        patientsbydate: {
+            type: new GraphQLList(PatientType),
+            args: {
+                month: {type: GraphQLString}
+            },
+            async resolve(parent, args) {
+                try {
+                    const data = await db.getDB().collection('patient').find({date: {'$regex' : args.month, '$options' : 'i'}}).toArray();
                     return data;
                 } catch (e){
                     console.log('Error happened');
